@@ -26,6 +26,13 @@ namespace InsuranceApp.Controllers
             return await _context.Items.Include(i => i.Category).ToListAsync();
         }
 
+        // 🔥 NEW: Get All Categories
+        [HttpGet("categories")]
+        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        {
+            return await _context.Categories.ToListAsync();
+        }
+
         // POST: api/items
         [HttpPost]
         public async Task<ActionResult<Item>> PostItem(Item item)

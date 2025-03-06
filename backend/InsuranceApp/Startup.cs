@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using InsuranceApp.Data;
@@ -9,12 +10,21 @@ namespace InsuranceApp
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration; 
+
+        
+        public Startup(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options =>
-                options.UseInMemoryDatabase("InsuranceDB"));  // Use in-memory DB
+                options.UseSqlite(_configuration.GetConnectionString("DefaultConnection"))); 
 
             services.AddControllers();
+
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", builder =>
