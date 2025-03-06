@@ -1,0 +1,7 @@
+/Users/shikhararora/Downloads/InsuranceApp/backend/InsuranceApp/obj/Debug/net9.0/InsuranceApp.csproj.AssemblyReference.cache
+/Users/shikhararora/Downloads/InsuranceApp/backend/InsuranceApp/obj/Debug/net9.0/InsuranceApp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/shikhararora/Downloads/InsuranceApp/backend/InsuranceApp/obj/Debug/net9.0/InsuranceApp.AssemblyInfoInputs.cache
+/Users/shikhararora/Downloads/InsuranceApp/backend/InsuranceApp/obj/Debug/net9.0/InsuranceApp.AssemblyInfo.cs
+/Users/shikhararora/Downloads/InsuranceApp/backend/InsuranceApp/obj/Debug/net9.0/InsuranceApp.csproj.CoreCompileInputs.cache
+/Users/shikhararora/Downloads/InsuranceApp/backend/InsuranceApp/obj/Debug/net9.0/InsuranceApp.MvcApplicationPartsAssemblyInfo.cs
+/Users/shikhararora/Downloads/InsuranceApp/backend/InsuranceApp/obj/Debug/net9.0/InsuranceApp.MvcApplicationPartsAssemblyInfo.cache
