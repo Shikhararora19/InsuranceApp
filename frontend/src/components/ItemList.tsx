@@ -29,29 +29,41 @@ const ItemList = () => {
     };
 
     return (
-        <div style={{ border: "1px solid black", padding: "20px", maxWidth: "400px", margin: "auto" }}>
-            {loading && <h3 style={{ textAlign: "center" }}>Loading...</h3>}
+        <div className="max-w-lg mx-auto bg-white p-6 shadow-md rounded-lg mt-6">
+            <h2 className="text-2xl font-bold text-gray-900 text-center mb-4">Insurance Items</h2>
+            
+            {loading && <p className="text-center text-gray-500">Loading...</p>}
 
-            {categories.map((category: { id: number; name: string }) => {
-                const categoryTotal = getCategoryTotal(category.id);
-                return (
-                    <div key={category.id}>
-                        <h3>{category.name} <span style={{ float: "right" }}>${categoryTotal}</span></h3>
-                        <ul style={{ listStyleType: "none", padding: 0 }}>
-                            {items
-                                .filter((item: Item) => item.categoryId === category.id)
-                                .map((item: Item) => (
-                                    <li key={item.id} style={{ display: "flex", justifyContent: "space-between" }}>
-                                        {item.name} <span>${item.value}</span>
-                                        <button onClick={() => handleDelete(item.id)} style={{ marginLeft: "10px" }}>🗑</button>
-                                    </li>
-                                ))}
-                        </ul>
-                    </div>
-                );
-            })}
+            <div className="space-y-6">
+                {categories.map((category: { id: number; name: string }) => {
+                    const categoryTotal = getCategoryTotal(category.id);
+                    return (
+                        <div key={category.id} className="p-4 border border-gray-300 rounded-lg">
+                            <h3 className="text-lg font-semibold text-gray-800 flex justify-between">
+                                {category.name} <span className="text-indigo-600">${categoryTotal}</span>
+                            </h3>
+                            <ul className="mt-2 space-y-2">
+                                {items
+                                    .filter((item: Item) => item.categoryId === category.id)
+                                    .map((item: Item) => (
+                                        <li key={item.id} className="flex justify-between items-center bg-gray-100 px-4 py-2 rounded-md">
+                                            <span className="text-gray-700">{item.name}</span>
+                                            <span className="text-gray-900">${item.value}</span>
+                                            <button 
+                                                onClick={() => handleDelete(item.id)} 
+                                                className="text-red-500 hover:text-red-700 transition duration-200"
+                                            >
+                                                🗑
+                                            </button>
+                                        </li>
+                                    ))}
+                            </ul>
+                        </div>
+                    );
+                })}
+            </div>
 
-            <h3 style={{ borderTop: "1px solid black", paddingTop: "10px", textAlign: "right" }}>
+            <h3 className="text-xl font-bold text-right text-indigo-700 border-t border-gray-300 pt-4 mt-6">
                 TOTAL: ${totalValue}
             </h3>
         </div>

@@ -13,10 +13,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ItemProvider> {/* Wrap everything inside ItemProvider */}
-      <div style={{ maxWidth: '500px', margin: 'auto', textAlign: 'center', padding: '20px' }}>
-        <h1>Insurance Items</h1>
-        <AddItemForm />  {/* Render the form to add items */}
-        <ItemList />  {/* Render the list of items */}
+        <div>
+        <h1 className="text-4xl font-bold text-gray-900 mb-6 items-center justify-center text-center">Insurance Items</h1>
+          <AddItemForm />  {/* Render the form to add items */}
+          <ItemList />  {/* Render the list of items */}
       </div>
     </ItemProvider>
   </React.StrictMode>
