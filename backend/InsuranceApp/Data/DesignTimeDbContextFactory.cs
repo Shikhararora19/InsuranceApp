@@ -17,7 +17,6 @@ namespace InsuranceApp.Data
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            // 🔥 Switch from SQL Server to SQLite
             optionsBuilder.UseSqlite(connectionString);
 
             return new AppDbContext(optionsBuilder.Options);
