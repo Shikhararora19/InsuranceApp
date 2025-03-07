@@ -35,8 +35,12 @@ namespace InsuranceApp.Controllers
 
         // POST: api/items
         [HttpPost]
-        public async Task<ActionResult<Item>> PostItem(Item item)
+        public async Task<ActionResult<Item>> PostItem([FromBody] Item item) // 🔥 Ensure it binds from JSON
         {
+            if (item == null || item.CategoryId <= 0) // 🔥 Validate input
+                return BadRequest("Invalid item data.");
+            item.Category = null;
+
             _context.Items.Add(item);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetItems), new { id = item.Id }, item);

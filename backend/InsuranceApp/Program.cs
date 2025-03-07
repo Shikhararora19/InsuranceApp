@@ -27,9 +27,8 @@ var app = builder.Build();
 
 app.UseRouting();
 
-// 🔥 FIX: Apply CORS policy
 app.UseCors("AllowAll");
-
+app.UseDeveloperExceptionPage();
 app.UseAuthorization();
 app.MapControllers();
 
