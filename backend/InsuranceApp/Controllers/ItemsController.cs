@@ -8,44 +8,67 @@ using System.Threading.Tasks;
 
 namespace InsuranceApp.Controllers
 {
+    /// <summary>
+    /// Controller for managing insurance items.
+    /// </summary>
     [Route("api/items")]
     [ApiController]
     public class ItemsController : ControllerBase
     {
         private readonly AppDbContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ItemsController"/> class.
+        /// </summary>
+        /// <param name="context">Database context.</param>
         public ItemsController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/items
+        /// <summary>
+        /// Retrieves a list of all items, including their associated category.
+        /// </summary>
+        /// <returns>A list of items.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Item>>> GetItems()
         {
             return await _context.Items.Include(i => i.Category).ToListAsync();
         }
 
+        /// <summary>
+        /// Retrieves a list of all categories.
+        /// </summary>
+        /// <returns>A list of categories.</returns>
         [HttpGet("categories")]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
             return await _context.Categories.ToListAsync();
         }
 
-        // POST: api/items
+        /// <summary>
+        /// Adds a new item to the database.
+        /// </summary>
+        /// <param name="item">The item to add.</param>
+        /// <returns>The created item.</returns>
         [HttpPost]
-        public async Task<ActionResult<Item>> PostItem([FromBody] Item item) // 🔥 Ensure it binds from JSON
+        public async Task<ActionResult<Item>> PostItem([FromBody] Item item)
         {
-            if (item == null || item.CategoryId <= 0) // 🔥 Validate input
+            if (item == null || item.CategoryId <= 0)
                 return BadRequest("Invalid item data.");
-            item.Category = null;
 
+            item.Category = null;
             _context.Items.Add(item);
             await _context.SaveChangesAsync();
+
             return CreatedAtAction(nameof(GetItems), new { id = item.Id }, item);
         }
 
-        // DELETE: api/items/{id}
+        /// <summary>
+        /// Deletes an item by ID.
+        /// </summary>
+        /// <param name="id">The ID of the item to delete.</param>
+        /// <returns>No content if successful, otherwise NotFound.</returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItem(int id)
         {
