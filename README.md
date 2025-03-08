@@ -1,8 +1,4 @@
 # 🏦 InsuranceApp
-
-![Repo Size](https://img.shields.io/github/repo-size/Shikhararora19/InsuranceApp?color=blue&style=for-the-badge)
-![Last Commit](https://img.shields.io/github/last-commit/Shikhararora19/InsuranceApp?style=for-the-badge)
-![Issues](https://img.shields.io/github/issues/Shikhararora19/InsuranceApp?style=for-the-badge)
 ![License](https://img.shields.io/github/license/Shikhararora19/InsuranceApp?style=for-the-badge)
 
 A **full-stack insurance management system** that allows users to manage insurance items and categories.
